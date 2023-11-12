@@ -1,0 +1,27 @@
+Enunciado:
+> Esta tarefa consiste em desenvolver uma aplicação que mostre gráficos 3D com primitivas do OpenGL e use transformações geométricas para produzir algum tipo de animação (isto é, a geometria não pode ser estática). Assim como na atividade anterior, a aplicação deve necessariamente usar a biblioteca ABCg e renderizar gráficos com o pipeline do OpenGL usando shaders. Use como referência os projetos loadmodel, lookat, starfield e viewer abordados nas notas de aula. Esta atividade pode ser um protótipo da aplicação que será apresentada na atividade final, mas também pode ser um projeto independente.
+
+Autoria:
+> Gabriel Lima Zambianco - 11201722750
+> Fabricio Expedito Albano Gaeta - 21032616
+
+Descrição:
+> Nome da aplicação: Star Wars - Yoda in space
+
+> Foi desenvolvida uma aplicação 3D em C++ utilizando a biblioteca ABCg e renderização gráfica com o pipeline do OpenGL usando shaders. Foi utilizado como referência os projetos loadmodel, lookat, starfield e viewer abordados na aula.  A aplicação consiste em um Yoda, personagem fictício no universo de Star Wars, sendo um mestre da ordem Jedi e um dos membros mais importantes da saga, que nesta aplicação fica centralizado flutuando com diversos outros Yodas no fundo vindo em direção à câmera. É possível interagir com o Yoda centralizado utilizando o cursor do mouse, podendo rotacioná-lo da forma que desejar. 
+
+> Para permitir a visualização das camadas do objeto desenhadas gradualmente, inserimos um slider na aplicação onde é possível alterar a quantidade de triângulos renderizados. Além disso, adicionamos o widget no canto superior esquerdo que indica a quantidade de frames por segundo. A aplicação também pode ser visualizada em fullscreen.
+
+Implementações: 
+> Yoda: É o personagem principal da aplicação. Nele foi aplicado o efeito trackball apresentado em aula, que funciona como um controle de interação de rotação que permite rodar o objeto em torno de si mesmo de modo a visualizá-lo de qualquer direção, de acordo com os cliques do mouse. Também é possível utilizar o scroll para fazer com que a câmera se aproxime ou não do objeto. 
+
+> O efeito trackball pode ser encontrado nos arquivos trackball.hpp e trackball.cpp, onde criamos a classe com os métodos e atributos das funções de utilização do mouse e dos movimentos do mouse com relação aos cliques com os botões e scroll, respectivamente.
+
+> Efeito starfield: Além da implementação do personagem central, aplicamos a transformação de projeção perspectiva para produzir o efeito de “campo estelar”, apresentado em aula, porém, inserimos diversos mini Yoda para remeter ao universo Star Wars e produzir um efeito ainda mais imersivo. 
+
+> A aplicação do efeito starfield se deu nos arquivos window.hpp onde implementamos a classe com os métodos e atributos para renderizar os objetos na tela e estabelecemos a função para sempre criar 500 minis Yoda de fundo na tela, e no arquivo window.cpp onde estabelecemos as configurações gerais da janela: ações dos eventos de mouse, onde estabelecemos o fundo preto e ativação do face culling para otimizar a renderização dos triângulos, não renderizando triângulos que não estão visíveis. Nestes arquivos, também instanciamos os objetos, configuramos uma câmera LookAt para limitar o espaço 3D visualizado. 
+
+> Os Yodas que flutuam no fundo da tabela são criados em posições randômicas e quando atingem a coordenada próxima da câmera, retornam para o fundo da visualização. Além disso, a aplicação contém um slider com os triângulos renderizados no Yoda para se observar as camadas dele sendo preenchidas. 
+
+> Dentro da pasta assets, inserimos o objeto 3D, e os arquivos depth.vert e depth.frag, semelhantes aos construídos em aula para o viewer1 e efeito starfield, que contém propriedades dos vértices dos triângulos e cores.
+
